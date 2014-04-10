@@ -1,0 +1,8 @@
+{% extends "loginregisterbase.html" %}
+
+{% block request %}Please Sign In{% endblock %}
+{% block request2 %}Sign In{% endblock %}
+{% block action %}{{url_for('login')}}{% endblock %}
+{% block content %}
+{{ super() }}
+{% endblock %}

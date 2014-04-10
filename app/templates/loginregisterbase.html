@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+      <title>{% block title %}{% endblock %}</title>
+      <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/signin.css')}}" rel="stylesheet">
+        {% endblock %}
+  </head>
+
+  <body>
+      {% block content %}
+      <div class="container">
+          {% block error %}
+            {% if error %}
+            <center><p class="text-danger">{{error}}</p></center>
+            {% endif %}
+          {% endblock %}
+          <form class="form-signin" role="form" action={% block action %}{% endblock %} method="POST">
+              <center><h2 class="form-signin-heading">{% block request %}Please Sign In{% endblock %}</h2></center>
+          <input type="username" class="form-control" placeholder="Username" name = "username" required autofocus>
+          <input type="password" class="form-control" placeholder="Password" name = "pwd" required>
+          <button class="btn btn-primary btn-lg active" type="submit">{% block request2 %}Sign in{% endblock %}</button>{% block register %}<a href="{{url_for('register')}}" class="btn btn-default btn-lg active" role="button">Register</a>{% endblock %}
+      </form>
+   </div> 
+    {% endblock %}
+   </body>
+</html>
+
+

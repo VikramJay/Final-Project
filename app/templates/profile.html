@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ session.username }}'s Profile{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+
+    {% block content %}
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+                <h3 class="masthead-brand">{{session.username}}'s Profile!</h3>
+              <ul class="nav masthead-nav">
+                  <li class="active"><a href="{{url_for('index')}}">Home</a></li>
+                  <li><a href="#">Apartment</a></li>
+                  <li><a href="{{url_for('logout')}}">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">DAS PROFILE</h1>
+            <p class="lead">Congratulations you logged in!</p>
+          </div>
+        </div>
+      </div>
+  </div>
+    {% endblock %}

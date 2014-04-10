@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}View users!{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+
+{% block content %}
+{% for user in data %}
+{{ user }}<br>
+{% endfor %}
+{% endblock %}
