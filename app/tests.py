@@ -26,7 +26,8 @@ class FinalProjectTestCase(unittest.TestCase):
 
         self.assertEqual(User.query.filter_by(username="name").first(), None)
         self.assertTrue(User.query.filter_by(username="uname").first().check_password("pwd"))
-        self.assertFalse(User.query.filter_by(username="uname").first().check_password("password"))  
+        self.assertFalse(User.query.filter_by(username="uname").first().check_password("password"))
+    
 
 if __name__ == '__main__':
     unittest.main()
