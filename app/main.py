@@ -5,15 +5,18 @@ import os
 
 app = Flask(__name__)
 try:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] #for running on heroku
 except KeyError:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' #for localhost
 
-app.config['DEBUG'] = True
+app.config['DEBUG'] = True #get some debugging output on crash
 app.secret_key = 'WOW SUCH SECRET'
-db = SQLAlchemy(app)
+db = SQLAlchemy(app) #bind database to app
 
 class User(db.Model):
+    """
+    database schema for users
+    """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     pwd_hash = db.Column(db.String(180))
@@ -41,6 +44,9 @@ def index():
 
 @app.route("/login", methods=['POST'])
 def login():
+    """
+    handle logging the user in
+    """
     if request.method == 'POST':
         uname = request.form['username']
         pwd = request.form['pwd']
@@ -59,6 +65,9 @@ def login():
 
 @app.route("/register", methods=['POST', 'GET'])
 def register():
+    """
+    handle registering the user
+    """
     if request.method == 'POST':
         uname = request.form['username']
         pwd = request.form['pwd']
@@ -77,6 +86,9 @@ def register():
 
 @app.route("/profile")
 def profile():
+    """
+    handle loading the profile page once user is logged in
+    """
     if 'username' in session:
         return render_template("profile.html")
     else:
@@ -85,14 +97,21 @@ def profile():
 
 @app.route('/logout')
 def logout():
+    """
+    handle logging the user out
+    """
     # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
 
 @app.route('/view_users')
 def view_users():
+    """
+    debugging view for looking at users in database
+    """
     return render_template("view_users.html", data=User.query.order_by(User.username))
         
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
+   
