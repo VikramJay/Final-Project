@@ -3,6 +3,9 @@
 {% block request %}Please Sign In{% endblock %}
 {% block request2 %}Sign In{% endblock %}
 {% block action %}{{url_for('login')}}{% endblock %}
+{% block title %}Log in!{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+
 {% block content %}
 {{ super() }}
 {% endblock %}

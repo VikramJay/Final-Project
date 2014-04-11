@@ -4,5 +4,7 @@
 {% block request2 %}Register{% endblock %}
 {% block register %}{% endblock %}
 {% block action %}{{url_for('register')}}{% endblock %}
+{% block title %}Register!{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
 
 {% block content %} {{ super() }} {% endblock %}
