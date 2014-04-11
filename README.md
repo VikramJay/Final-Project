@@ -1,9 +1,18 @@
 # Roommate Application
 
-To run the app, make sure you pip install the requirements from requirements.txt, and then simply run:
+To run the app:
+
+Create and activate a virtual environment with:
+    
+    virtualenv venv
+    source venv/bin/activate
+
+Then install the dependencies:
+    
+    pip install -r requirements.txt
+    
+Then simply run:
     
     python app/main.py
-
-from the root application directory
 
 Live demo: http://pacific-headland-9328.herokuapp.com/
