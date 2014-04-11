@@ -5,3 +5,5 @@ To run the app, make sure you pip install the requirements from requirements.txt
     python app/main.py
 
 from the root application directory
+
+Live demo: http://pacific-headland-9328.herokuapp.com/
